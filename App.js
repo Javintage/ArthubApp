@@ -1,0 +1,11 @@
+const express=require('express')
+const MongoStore=require('connect-mongo')
+const App=express()
+const router=require('./router')
+App.set('views','views')
+App.set('view engine','ejs')
+App.use(express.static('public'))
+App.use(express.urlencoded({extended:false}))
+App.use(express.json())
+App.use('/',router)
+module.exports=App
